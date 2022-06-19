@@ -1,53 +1,44 @@
-import React from 'react';
+import React from "react";
 
 // The initial state of the context
 const initialState = {
-	user: {
-		name: 'Ole',
-		age: 26,
-	},
+    user: {
+        name: "Ole",
+        age: 26,
+    },
 };
 
 // Actions for easy dispatching
 export const actions = {
-	setName: (name) => ({ type: 'SET_NAME', payload: name }),
-	setAge: (age) => ({ type: 'SET_AGE', payload: age }),
+    setName: (name) => ({ type: "SET_NAME", payload: name }),
+    setAge: (age) => ({ type: "SET_AGE", payload: age }),
 };
 
 // Reduces actions given by dispatching
 const reducer = (state, action) => {
-	switch (action.type) {
-		case 'SET_NAME': {
-			return {
-				...state,
-				user: {
-					...state.user,
-					name: action.payload,
-				},
-			};
-		}
-		case 'SET_AGE': {
-			return {
-				...state,
-				user: {
-					...state.user,
-					age: action.payload,
-				},
-			};
-		}
-		case 'SET_AGE': {
-			return {
-				...state,
-				user: {
-					...state.user,
-					age: action.payload,
-				},
-			};
-		}
-		default: {
-			return state;
-		}
-	}
+    switch (action.type) {
+        case "SET_NAME": {
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    name: action.payload,
+                },
+            };
+        }
+        case "SET_AGE": {
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    age: action.payload,
+                },
+            };
+        }
+        default: {
+            return state;
+        }
+    }
 };
 
 // The context
@@ -55,7 +46,7 @@ export const Context = React.createContext(initialState);
 
 // Provides state and dispatch for the context
 export const Provider = ({ children }) => {
-	const [state, dispatch] = React.useReducer(reducer, initialState);
+    const [state, dispatch] = React.useReducer(reducer, initialState);
 
-	<Context.Provider value={(state, dispatch)}>{children}</Context.Provider>;
+    <Context.Provider value={(state, dispatch)}>{children}</Context.Provider>;
 };
