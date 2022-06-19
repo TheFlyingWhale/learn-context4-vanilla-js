@@ -6,7 +6,6 @@ import { Provider } from "./Context";
 function App() {
     return (
         <Provider>
-            i like food
             <Display></Display>
             <Form></Form>
         </Provider>

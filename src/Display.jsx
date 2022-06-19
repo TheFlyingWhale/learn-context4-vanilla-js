@@ -1,14 +1,15 @@
-import { useContext } from 'react';
-import { Context } from './Context';
+import { UseContext, Context } from "./Context";
 
 const Display = () => {
-	const { state } = useContext(Context);
-	return (
-		<>
-			<p>Name: {state.user.name}</p>
-			<p>Age: {state.user.age}</p>
-		</>
-	);
+    const { state } = UseContext(Context);
+    const { name, age } = state.user;
+
+    return (
+        <>
+            <p>Name: {name}</p>
+            <p>Age: {age}</p>
+        </>
+    );
 };
 
 export default Display;

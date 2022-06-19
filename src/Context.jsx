@@ -8,12 +8,6 @@ const initialState = {
     },
 };
 
-// Actions for easy dispatching
-export const actions = {
-    setName: (name) => ({ type: "SET_NAME", payload: name }),
-    setAge: (age) => ({ type: "SET_AGE", payload: age }),
-};
-
 // Reduces actions given by dispatching
 const reducer = (state, action) => {
     switch (action.type) {
@@ -42,11 +36,42 @@ const reducer = (state, action) => {
 };
 
 // The context
-export const Context = React.createContext(initialState);
+export const Context = React.createContext({
+    state: initialState,
+    actions: {
+        setName: () => {},
+        setAge: () => {},
+    },
+});
+
+export const UseContext = () => React.useContext(Context);
 
 // Provides state and dispatch for the context
 export const Provider = ({ children }) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
-    <Context.Provider value={(state, dispatch)}>{children}</Context.Provider>;
+    const setName = (name) => {
+        dispatch({
+            type: "SET_NAME",
+            payload: name,
+        });
+    };
+
+    const setAge = (age) => {
+        dispatch({
+            type: "SET_AGE",
+            payload: age,
+        });
+    };
+
+    const commands = {
+        setAge,
+        setName,
+    };
+
+    return (
+        <Context.Provider value={{ state, commands }}>
+            {children}
+        </Context.Provider>
+    );
 };
