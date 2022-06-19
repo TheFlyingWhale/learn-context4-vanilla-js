@@ -36,17 +36,12 @@ const reducer = (state, action) => {
 };
 
 // The context
-export const Context = React.createContext({
-    state: initialState,
-    actions: {
-        setName: () => {},
-        setAge: () => {},
-    },
-});
+export const Context = React.createContext(initialState);
 
+// Function used to retrieve state or actions
 export const UseContext = () => React.useContext(Context);
 
-// Provides state and dispatch for the context
+// Provides state and commands to children of provider
 export const Provider = ({ children }) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
