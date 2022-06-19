@@ -1,1 +1,1 @@
-# Learn Context Vanilla Javascript
+# Learn Reducer Context Vanilla Javascript
