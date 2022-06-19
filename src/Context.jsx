@@ -35,6 +35,15 @@ const reducer = (state, action) => {
 				},
 			};
 		}
+		case 'SET_AGE': {
+			return {
+				...state,
+				user: {
+					...state.user,
+					age: action.payload,
+				},
+			};
+		}
 		default: {
 			return state;
 		}
@@ -45,7 +54,8 @@ const reducer = (state, action) => {
 export const Context = React.createContext(initialState);
 
 // Provides state and dispatch for the context
-export const GetStateAndDispatch = () => {
+export const Provider = ({ children }) => {
 	const [state, dispatch] = React.useReducer(reducer, initialState);
-	return { state, dispatch };
+
+	<Context.Provider value={(state, dispatch)}>{children}</Context.Provider>;
 };

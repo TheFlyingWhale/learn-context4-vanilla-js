@@ -1,14 +1,14 @@
 import React from 'react';
 import Display from './Display';
 import Form from './Form';
-import { Context, GetStateAndDispatch } from './Context';
+import { Provider } from './Context';
 
 function App() {
 	return (
-		<Context.Provider value={GetStateAndDispatch()}>
+		<Provider>
 			<Display></Display>
 			<Form></Form>
-		</Context.Provider>
+		</Provider>
 	);
 }
 
